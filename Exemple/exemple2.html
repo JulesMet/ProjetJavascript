@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Juste Prix 2</title>
+		<meta charset='utf-8' />
+		<link rel="stylesheet" type="text/css" href="MyStyle.css"/>
+		<script>
+			var num_prix=0;
+			var prix_secret=0;
+			var prix=[500,200,800]; //création d'un tableau de prix prix[0]=500, prix[1]=200 et prix[2]=800
+			function entierAleatoire(min, max)
+			{
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			function jouer()
+			{
+				num_prix=entierAleatoire(0, 2);
+				console.log("num_prix : "+num_prix);
+				prix_secret=prix[num_prix];
+				console.log("prix secret : "+prix_secret);
+				document.getElementById("rep").style.visibility="visible";
+				document.getElementById("bp_verif").style.visibility="visible";
+			}
+			function juste_prix() {
+				var rep=parseInt(document.getElementById("rep").value);
+				if(rep > prix_secret)
+				{
+					document.getElementById("res").innerHTML = "c'est moins !";
+					document.getElementById("res").style.color="red";
+				} 
+				else if(rep < prix_secret)
+				{
+					document.getElementById("res").innerHTML = "c'est plus !";
+					document.getElementById("res").style.color="red";
+				}
+				else
+				{
+					document.getElementById("res").innerHTML = "c'est le juste prix !!!!";
+					document.getElementById("res").style.color="green";
+				}
+            }
+		</script>
+	</head>
+	<body>
+		<center>
+		<h1>Le Juste Prix</h1>
+		<h2>Chercher un prix</h2>
+		<p>Donner le prix du produit</p>
+		<br><br>
+		<INPUT TYPE="button" VALUE="JOUER" ONCLICK="jouer()">
+		<br><br>
+		<INPUT TYPE="text" id="rep" NAME="saisie" VALUE="0" id="rep" style="visibility:hidden">
+		<br><br>
+		<INPUT TYPE="button" id="bp_verif" VALUE="Vérifier" ONCLICK="juste_prix()" style="visibility:hidden">
+		<br>
+		<br>
+		<div id="res"></div>
+		</center>
+	</body>
+</html>
