@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Juste Prix 1</title>
+		<meta charset='utf-8' />
+		<link rel="stylesheet" type="text/css" href="MyStyle.css"/>
+		<script>
+			var num_prod=0; // création d'une variable globale num_prod
+			
+			// fonction qui retourne un entier aléatoire allant de min à max
+			function entierAleatoire(min, max)
+			{
+			 return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			
+			// fonction déclanchée lors du clique sur le bouton afficher
+			function affiche_prod()
+			{
+				var new_num_prod=entierAleatoire(1, 3); // création d'une variable locale qui contient
+														// le numéro du nouveau produit à afficher.
+														// La valeur est affectée grâce à l'appel de la
+														// fonction entierAleatoire() qui retourne un nombre
+														// alétoire allant de 1 à 3
+				//tant que le nouveau produit est le même que celui d'avant, on génère un nouveau nombre aléatoire
+				while(num_prod==new_num_prod) new_num_prod=entierAleatoire(1, 3);
+				num_prod=new_num_prod;
+				console.log('num_prod= '+ num_prod); //affichage dans la console (F12) pour le debug
+				//modification de l'image
+				document.getElementById('myImage').src='produit'+num_prod+'.jpg';
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Le Juste Prix</h1>
+		<h2>Afficher une image d'un produit</h2>
+		<center>
+			<input type="button" value="AFFICHER" onclick="affiche_prod()">
+			<br><br><br>
+			<img id="myImage" src="mystere.jpg" alt="mystere" style="width:100px">
+		</center>
+	</body>
+</html>

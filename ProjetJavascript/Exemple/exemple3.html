@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Juste Prix 3</title>
+		<meta charset='utf-8' />
+		<link rel="stylesheet" type="text/css" href="MyStyle.css"/>
+		<script>
+			var series=[[1,2,3],[2,1,3],[3,2,1]]; 	// création d'un tableau double entrée de dimension 3*3
+													// soit 3 séries de 3 produits
+													// serie[0][0]=1 le 1er produit de la 1ère série
+													// serie[0][2]=3 le 3ème produit de la 1ère série
+													// serie[2][1]=2 le 2ème produit de la 3ème série
+													
+			var num_serie=0;
+			var prod1=0;
+			var prod2=0;
+			var prod3=0;
+			
+			function entierAleatoire(min, max)
+			{
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			
+			function jouer()
+			{
+				num_serie=entierAleatoire(0, 2);
+				console.log("num_serie : "+num_serie);
+				prod1=series[num_serie][0];
+				prod2=series[num_serie][1];
+				prod3=series[num_serie][2];
+				document.getElementById("res").innerHTML = "les 3 produits de la série "+(num_serie+1)+" sont : "+prod1+" "+prod2+" "+prod3+" !";
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+		<h1>Le Juste Prix</h1>
+		<h2>Gestion des séries</h2>
+		<br><br>
+		<INPUT TYPE="button" VALUE="JOUER" ONCLICK="jouer()">
+		<br><br>
+		<div id="res"></div>
+		</center>
+	</body>
+</html>
